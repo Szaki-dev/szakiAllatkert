@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Állatkert.NET";
+}
+<div>
+    <form class="row g-3" method="post">
+        <div class="col-md-4">
+            <label class="form-label">Név</label>
+            <input type="text" class="form-control" asp-for="Animal.Name"/>
+            <span class="text-danger" asp-validation-for="Animal.Name"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Faj</label>
+            <input type="text" class="form-control" asp-for="Animal.Species"/>
+            <span class="text-danger" asp-validation-for="Animal.Species"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Kor</label>
+            <input type="number" class="form-control" asp-for="Animal.Age"/>
+            <span class="text-danger" asp-validation-for="Animal.Age"></span>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Hozzáad</button>
+        </div>
+    </form>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Név</th>
+        <th scope="col">Faj</th>
+        <th scope="col">Kor</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Animal in Model.Animals)
+        {
+            <tr>
+                <td>@Animal.Name</td>
+                <td>@Animal.Species</td>
+                <td>@Animal.Age</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>
